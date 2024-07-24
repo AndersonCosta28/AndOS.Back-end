@@ -1,0 +1,10 @@
+global using AndOS.API;
+global using AndOS.Application.Interfaces;
+global using AndOS.Domain.Entities;
+global using AndOS.Domain.Interfaces;
+global using AndOS.Infrastructure.Database;
+global using AndOS.Infrastructure.Identity;
+global using AndOS.Infrastructure.Identity.Entities;
+global using AndOS.Resources.Localization;
+global using Microsoft.AspNetCore.Mvc.Testing;
+global using Microsoft.Extensions.Localization;

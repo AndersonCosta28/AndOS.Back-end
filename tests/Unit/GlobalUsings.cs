@@ -1,0 +1,11 @@
+﻿global using AndOS.API.Controllers;
+global using AndOS.Application.Interfaces;
+global using AndOS.Domain.Entities;
+global using AndOS.Domain.Interfaces;
+global using AndOS.Infrastructure.Identity.Entities;
+global using AndOS.Resources.Localization;
+global using FluentValidation.TestHelper;
+global using MediatR;
+global using Microsoft.Extensions.Localization;
+global using Moq;
+global using File = AndOS.Domain.Entities.File;
