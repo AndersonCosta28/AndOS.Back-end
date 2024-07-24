@@ -41,7 +41,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AndOS.Core\AndOS.Core.csproj" />
     <ProjectReference Include="..\AndOS.Application\AndOS.Application.csproj" />
   </ItemGroup>
 </Project>
