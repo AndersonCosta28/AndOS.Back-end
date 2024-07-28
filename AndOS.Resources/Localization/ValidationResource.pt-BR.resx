@@ -195,4 +195,10 @@
   <data name="UserIdCannotBeNullOrEmpty" xml:space="preserve">
     <value>Id do usuário não pode ser nulo ou vazio</value>
   </data>
+  <data name="DefaultProgramToExtensionNotExist" xml:space="preserve">
+    <value>Não existe programa padrão para essa extensão</value>
+  </data>
+  <data name="UserPreferenceNotExists" xml:space="preserve">
+    <value>Preferência de usuário não existe</value>
+  </data>
 </root>

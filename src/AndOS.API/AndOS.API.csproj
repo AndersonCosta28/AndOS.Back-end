@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>89fe8b39-7948-45d6-ba04-5e9929fa3907</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7" />
@@ -28,10 +28,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AndOS.Infrastructure\AndOS.Infrastructure.csproj" />
     <ProjectReference Include="..\..\AndOS.ServiceDefaults\AndOS.ServiceDefaults.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Filters\" />
   </ItemGroup>
   <Import Project="./Targets/ef-commands.targets" />
 </Project>

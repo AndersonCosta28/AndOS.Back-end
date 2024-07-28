@@ -1,10 +1,7 @@
-﻿namespace AndOS.Infrastructure.Database.EntityConfigurations;
-
-using AndOS.Domain.Entities;
-using AndOS.Infrastructure.Identity.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using AndOS.Infrastructure.Identity.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+namespace AndOS.Infrastructure.Database.EntityConfigurations;
 public class FolderConfiguration : IEntityTypeConfiguration<Folder>
 {
     public void Configure(EntityTypeBuilder<Folder> builder)

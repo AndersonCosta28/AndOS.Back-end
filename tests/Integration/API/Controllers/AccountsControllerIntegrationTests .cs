@@ -1,8 +1,3 @@
-using AndOS.Core.Enums;
-using AndOS.Shared.DTOs;
-using AndOS.Shared.Requests.Accounts.Create;
-using AndOS.Shared.Requests.Accounts.Get.GetById;
-using AndOS.Shared.Requests.Accounts.Update;
 using Integration.API.Factories;
 using Integration.API.Utils;
 using System.Net.Http.Json;

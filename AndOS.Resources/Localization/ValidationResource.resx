@@ -196,4 +196,10 @@
   <data name="UserIdCannotBeNullOrEmpty" xml:space="preserve">
     <value>UserId cannot be null or empty</value>
   </data>
+  <data name="ThereIsNoDefaultProgramForThisExtension" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserPreferenceNotExists" xml:space="preserve">
+    <value>User preferences not exists</value>
+  </data>
 </root>

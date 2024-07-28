@@ -1,7 +1,4 @@
-﻿using AndOS.Core.StorageConfigs;
-using AndOS.Domain.Entities;
-using AndOS.Infrastructure.CloudStorage;
-using Azure;
+﻿using AndOS.Infrastructure.CloudStorage;
 using Azure.Storage.Blobs;
 using Common.Fixtures;
 using System.Text.Json;

@@ -5,11 +5,9 @@ namespace AndOS.API.Localization;
 
 public static class LocalizationServiceCollection
 {
-    public static IServiceCollection AddLocalizationService(this IServiceCollection services)
-    {
-
-        return services.AddLocalization()
-                       .Configure<RequestLocalizationOptions>(options =>
+    public static IServiceCollection AddLocalizationService(this IServiceCollection services) =>
+        services.AddLocalization()
+                .Configure<RequestLocalizationOptions>(options =>
         {
             string[] supportedCultures = ["en-US", "pt-BR"];
             options.DefaultRequestCulture = new RequestCulture("en-US");
@@ -18,5 +16,4 @@ public static class LocalizationServiceCollection
             options.FallBackToParentCultures = true;
             options.FallBackToParentUICultures = true;
         });
-    }
 }

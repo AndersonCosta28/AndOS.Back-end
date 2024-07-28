@@ -1,12 +1,16 @@
 global using MediatR;
+global using AndOS.Core.Enums;
 global using File = AndOS.Domain.Entities.File;
+global using AndOS.Application.Interfaces;
+global using AndOS.Domain.Entities;
+global using AndOS.Domain.Interfaces;
+global using AndOS.Shared.DTOs;
 using AndOS.API.Cors;
 using AndOS.API.Localization;
 using AndOS.API.Mapper;
 using AndOS.Infrastructure;
 using AndOS.Infrastructure.Database;
 using FluentValidation;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 

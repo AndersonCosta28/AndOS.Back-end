@@ -1,5 +1,4 @@
-﻿using AndOS.Core.Enums;
-using AndOS.Domain.Entities;
+﻿using AndOS.Domain.Entities;
 using Bogus;
 namespace Common.Fixtures;
 

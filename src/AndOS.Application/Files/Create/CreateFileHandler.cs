@@ -30,9 +30,6 @@ public class CreateFileHandler(
         var file = new File(request.Name, request.Extension, parentFolder, user);
 
         await fileRepository.AddAsync(file, cancellationToken);
-        var cloudStorageService = cloudStorageServiceFactory.GetCloudStorageService(account.CloudStorage);
-        var url = await cloudStorageService.GetUploadUrlAsync(file, account);
-
         var claimsToAdd = new List<IUserClaim>()
              {
                 authorizationService.CreateUserClaim(file.Id, FilePermission.Read, ClaimConsts.VALUE_TRUE),
@@ -44,6 +41,9 @@ public class CreateFileHandler(
 
         foreach (var claim in claimsToAdd)
             await authorizationService.UpdatePermissionAsync(user, claim, cancellationToken);
+        var cloudStorageService = cloudStorageServiceFactory.GetCloudStorageService(account.CloudStorage);
+        var url = await cloudStorageService.GetUploadUrlAsync(file, account);
+
 
         return new CreateFileResponse(file.Id, url, account.CloudStorage);
     }

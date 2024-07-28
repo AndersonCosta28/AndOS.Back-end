@@ -1,7 +1,6 @@
 ﻿using AndOS.Application.Folders.Common.Specs;
 using AndOS.Application.Interfaces;
 using AndOS.Core.Enums;
-using AndOS.Domain.Interfaces;
 using AndOS.Shared.Requests.Folders.Get.GetById;
 using AndOS.Shared.Requests.Folders.Get.GetByPath;
 

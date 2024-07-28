@@ -1,5 +1,4 @@
-﻿using AndOS.Core.Schemas;
-using AndOS.Domain.Exceptions.UserExceptions;
+﻿using AndOS.Domain.Exceptions.UserExceptions;
 
 namespace Unit.Domain;
 

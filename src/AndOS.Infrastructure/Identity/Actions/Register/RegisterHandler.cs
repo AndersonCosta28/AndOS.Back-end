@@ -2,7 +2,6 @@
 using AndOS.Infrastructure.Identity.Entities;
 using AndOS.Shared.Requests.Auth;
 using MediatR;
-using System.Net;
 
 namespace AndOS.Infrastructure.Identity.Actions.Register;
 
@@ -25,7 +24,7 @@ public class RegisterHandler(
             if (!result.Succeeded)
             {
                 var message = string.Join(", ", result.Errors.Select(e => e.Description));
-                throw new InfrastructureLayerException(message); 
+                throw new InfrastructureLayerException(message);
             }
 
             List<IUserClaim> claimsToAdd = [authorizationService.CreateUserClaim(user.Folder.Id, FolderPermission.Read, ClaimConsts.VALUE_TRUE)];

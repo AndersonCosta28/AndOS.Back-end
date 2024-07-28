@@ -1,6 +1,4 @@
 ﻿global using AndOS.Application.Interfaces;
-global using AndOS.Core.Constants;
-global using AndOS.Core.Enums;
 global using AndOS.Domain.Entities;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.EntityFrameworkCore;
@@ -8,6 +6,11 @@ global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using System.Security.Claims;
 global using File = AndOS.Domain.Entities.File;
+global using AndOS.Core.Constants;
+global using AndOS.Core.Enums;
+global using AndOS.Core.Extensions;
+global using AndOS.Core.StorageConfigs;
+global using AndOS.Shared.Consts;
 using AndOS.Infrastructure.CloudStorage;
 using AndOS.Infrastructure.Custom;
 using AndOS.Infrastructure.Database;

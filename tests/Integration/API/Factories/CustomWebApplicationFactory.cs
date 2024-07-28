@@ -1,6 +1,4 @@
-﻿using AndOS.Infrastructure.Database;
-using AndOS.Infrastructure.Identity;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;

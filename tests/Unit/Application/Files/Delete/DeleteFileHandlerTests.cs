@@ -2,9 +2,6 @@
 using AndOS.Application.Files.Delete;
 using AndOS.Application.Files.Get.GetById;
 using AndOS.Application.Folders.Get.GetAccountFolderInParentFolder;
-using AndOS.Core.Enums;
-using AndOS.Domain.Entities;
-using AndOS.Shared.Requests.Files.Delete;
 using Common.Fixtures;
 
 namespace Unit.Application.Files.Delete

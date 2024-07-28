@@ -1,10 +1,6 @@
 ﻿using AndOS.Application.Exceptions;
 using AndOS.Application.Folders.Create;
 using AndOS.Application.Folders.Get.GetById;
-using AndOS.Shared.Requests.Folders.Create;
-using Azure;
-using NuGet.ContentModel;
-using System;
 
 namespace Unit.Application.Folders.Create;
 

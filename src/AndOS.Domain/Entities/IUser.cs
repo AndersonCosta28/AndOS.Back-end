@@ -13,6 +13,7 @@ public interface IUser : IAggregateRoot, IEntity
     Folder Folder { get; set; }
 
     List<Account> Accounts { get; set; }
+    public string Language { get; set; }
 
     void UpdateUserName(string userName)
     {

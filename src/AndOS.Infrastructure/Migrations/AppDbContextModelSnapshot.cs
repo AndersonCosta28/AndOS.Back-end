@@ -17,7 +17,7 @@ namespace AndOS.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "8.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -176,6 +176,49 @@ namespace AndOS.Infrastructure.Migrations
                     b.ToTable("Folders");
                 });
 
+            modelBuilder.Entity("AndOS.Domain.Entities.DefaultProgramForExtension", b =>
+                {
+                    b.Property<string>("Extension")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Program")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("UserPreferenceId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ApplicationUserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Extension", "Program", "UserPreferenceId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("UserPreferenceId");
+
+                    b.ToTable("DefaultProgramForExtension");
+                });
+
+            modelBuilder.Entity("AndOS.Domain.Entities.UserPreference", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("UserPreferences");
+                });
+
             modelBuilder.Entity("AndOS.Infrastructure.Identity.Entities.ApplicationRole", b =>
                 {
                     b.Property<Guid>("Id")
@@ -261,6 +304,9 @@ namespace AndOS.Infrastructure.Migrations
 
                     b.Property<Guid>("FolderId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -458,6 +504,32 @@ namespace AndOS.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("AndOS.Domain.Entities.DefaultProgramForExtension", b =>
+                {
+                    b.HasOne("AndOS.Infrastructure.Identity.Entities.ApplicationUser", null)
+                        .WithMany("DefaultProgramsToExtensions")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("AndOS.Domain.Entities.UserPreference", "UserPreference")
+                        .WithMany("DefaultProgramsToExtensions")
+                        .HasForeignKey("UserPreferenceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserPreference");
+                });
+
+            modelBuilder.Entity("AndOS.Domain.Entities.UserPreference", b =>
+                {
+                    b.HasOne("AndOS.Infrastructure.Identity.Entities.ApplicationUser", "User")
+                        .WithOne()
+                        .HasForeignKey("AndOS.Domain.Entities.UserPreference", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("AndOS.Infrastructure.Identity.Entities.ApplicationRoleClaim", b =>
                 {
                     b.HasOne("AndOS.Infrastructure.Identity.Entities.ApplicationRole", null)
@@ -525,11 +597,18 @@ namespace AndOS.Infrastructure.Migrations
                     b.Navigation("Folders");
                 });
 
+            modelBuilder.Entity("AndOS.Domain.Entities.UserPreference", b =>
+                {
+                    b.Navigation("DefaultProgramsToExtensions");
+                });
+
             modelBuilder.Entity("AndOS.Infrastructure.Identity.Entities.ApplicationUser", b =>
                 {
                     b.Navigation("Accounts");
 
                     b.Navigation("Folder");
+
+                    b.Navigation("DefaultProgramsToExtensions");
                 });
 #pragma warning restore 612, 618
         }

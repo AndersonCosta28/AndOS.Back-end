@@ -18,6 +18,6 @@ public class ApplicationUserConfiguration : IEntityTypeConfiguration<Application
         builder.HasOne(a => a.Folder)
                 .WithOne(f => (ApplicationUser)f.User)
                 .HasForeignKey<Folder>(u => u.UserId)
-                .OnDelete(DeleteBehavior.Cascade); // Ajuste o comportamento de exclusão conforme necessário
+                .OnDelete(DeleteBehavior.Cascade);
     }
 }

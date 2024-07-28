@@ -22,6 +22,8 @@ public static class RepositoryServiceCollection
         services.AddScoped<IRepository<IRoleClaim>, RoleClaimRepository>();
         services.AddScoped<IReadRepository<IRoleClaim>, RoleClaimRepository>();
 
+        services.AddScoped<IRepository<UserPreference>, UserPreferenceRepository>();
+        services.AddScoped<IReadRepository<UserPreference>, UserPreferenceRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         return services;
     }

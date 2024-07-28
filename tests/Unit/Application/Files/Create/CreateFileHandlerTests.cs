@@ -1,14 +1,9 @@
 ﻿using AndOS.Application.Accounts.Get.GetById;
 using AndOS.Application.Exceptions;
 using AndOS.Application.Files.Create;
-using AndOS.Application.Files.Get.GetById;
 using AndOS.Application.Folders.Get.GetAccountFolderInParentFolder;
 using AndOS.Application.Folders.Get.GetById;
-using AndOS.Core.Enums;
-using AndOS.Shared.Requests.Files.Create;
 using Common.Fixtures;
-using NuGet.Protocol.Plugins;
-using System.Threading;
 using ISender = MediatR.ISender;
 
 
@@ -44,7 +39,7 @@ public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<
         // Setup localization messages
         _localizerMock.Setup(l => l["AccountNotFound"]).Returns(new LocalizedString("AccountNotFound", "Account not found"));
         _localizerMock.Setup(l => l["ParentFolderNotFound"]).Returns(new LocalizedString("ParentFolderNotFound", "Parent folder not found"));
-        _handler = new CreateFileHandler(            
+        _handler = new CreateFileHandler(
             _fileRepositoryMock.Object,
             _folderRepositoryMock.Object,
             _currentUserContextMock.Object,

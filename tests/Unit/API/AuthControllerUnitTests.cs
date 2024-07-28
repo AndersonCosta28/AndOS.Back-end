@@ -1,5 +1,4 @@
-﻿using AndOS.Shared.Requests.Auth;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace Unit.API;

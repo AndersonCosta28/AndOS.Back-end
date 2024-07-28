@@ -1,10 +1,6 @@
 ﻿using AndOS.Application.Exceptions;
 using AndOS.Application.Folders.Common.Specs;
 using AndOS.Application.Folders.Get.GetByPath;
-using AndOS.Core.Enums;
-using AndOS.Shared.DTOs;
-using AndOS.Shared.Requests.Folders.Get.GetById;
-using AndOS.Shared.Requests.Folders.Get.GetByPath;
 
 namespace Unit.Application.Folders.Get.GetByPath
 {

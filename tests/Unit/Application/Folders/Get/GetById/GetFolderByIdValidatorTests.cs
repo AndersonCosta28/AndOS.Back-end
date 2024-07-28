@@ -1,7 +1,5 @@
 ﻿using AndOS.Application.Folders.Get.GetById;
 
-using AndOS.Shared.Requests.Folders.Get.GetById;
-
 namespace Unit.Application.Folders.Get.GetById
 {
     public class GetFolderByIdValidatorTests

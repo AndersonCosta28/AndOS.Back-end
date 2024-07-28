@@ -21,6 +21,9 @@ public class ApplicationUser : IdentityUser<Guid>, IUser
     public Folder Folder { get; set; }
     public Guid FolderId { get; set; }
     public bool UserNameUpdated { get; set; }
+    public List<DefaultProgramForExtension> DefaultProgramsToExtensions { get; set; }
+    public string Language { get; set; }
+
     public void UpdateUserName(string userName)
     {
         if (UserNameUpdated)

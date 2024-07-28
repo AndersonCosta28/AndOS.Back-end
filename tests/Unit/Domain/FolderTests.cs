@@ -1,5 +1,4 @@
-﻿using AndOS.Core.Enums;
-using AndOS.Domain.Exceptions;
+﻿using AndOS.Domain.Exceptions;
 using AndOS.Domain.Exceptions.FolderExceptions;
 using Common.Fixtures;
 

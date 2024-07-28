@@ -9,11 +9,13 @@ public class AppDbContext :
     IdentityDbContext<ApplicationUser, ApplicationRole, Guid, ApplicationUserClaim, ApplicationUserRole, IdentityUserLogin<Guid>, ApplicationRoleClaim, IdentityUserToken<Guid>>
 {
     private ICurrentUserContext _currentUserContext;
-    public AppDbContext() { 
+    public AppDbContext()
+    {
         Database.EnsureCreated();
     }
 
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
         Database.EnsureCreated();
     }
 
@@ -25,16 +27,7 @@ public class AppDbContext :
     public DbSet<Account> Accounts => Set<Account>();
     public DbSet<File> Files => Set<File>();
     public DbSet<Folder> Folders => Set<Folder>();
-
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //=> optionsBuilder
-    //    .ConfigureWarnings(
-    //        b => b.Log(
-    //            (RelationalEventId.CommandInitialized, LogLevel.Information),
-    //            (RelationalEventId.CommandCreated, LogLevel.Information),
-    //            (RelationalEventId.CommandExecuted, LogLevel.Information),
-    //            (RelationalEventId.CommandExecuting, LogLevel.Information),
-    //            (RelationalEventId.CommandCreating, LogLevel.Information)));
+    public DbSet<UserPreference> UserPreferences => Set<UserPreference>();
 
     public override int SaveChanges(bool acceptAllChangesOnSuccess)
     {

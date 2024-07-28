@@ -1,7 +1,6 @@
 ﻿using AndOS.Application.Exceptions;
 using AndOS.Application.Folders.Delete;
 using AndOS.Application.Folders.Get.GetById;
-using AndOS.Shared.Requests.Folders.Delete;
 
 namespace Unit.Application.Folders.Delete
 {

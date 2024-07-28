@@ -1,7 +1,6 @@
 ﻿using AndOS.Application.Exceptions;
 using AndOS.Application.Files.Get.GetById;
 using AndOS.Application.Files.Update.Rename;
-using AndOS.Shared.Requests.Files.Update.Rename;
 using Common.Fixtures;
 
 namespace Unit.Application.Files.Update.Rename
