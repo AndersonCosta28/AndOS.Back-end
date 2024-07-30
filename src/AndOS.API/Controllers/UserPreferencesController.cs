@@ -31,8 +31,8 @@ public class UserPreferencesController(ISender sender) : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost(nameof(GetDefaultProgramByExtension))]
-    public async Task<IActionResult> GetDefaultProgramByExtension([FromBody] GetDefaultProgramByExtensionRequest request)
+    [HttpGet(nameof(GetDefaultProgramByExtension))]
+    public async Task<IActionResult> GetDefaultProgramByExtension([FromQuery] GetDefaultProgramByExtensionRequest request)
     {
         var result = await sender.Send(request);
         return Ok(result);
