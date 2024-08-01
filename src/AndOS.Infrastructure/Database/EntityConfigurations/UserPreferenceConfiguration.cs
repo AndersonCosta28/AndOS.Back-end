@@ -8,6 +8,10 @@ public class UserPreferenceConfiguration : IEntityTypeConfiguration<UserPreferen
     {
         builder.HasKey(x => x.Id);
 
+        builder.Property(p => p.Language)
+            .HasDefaultValue("en-US")
+            .IsRequired();
+
         builder.HasOne(x => (ApplicationUser)x.User)
             .WithOne();
 

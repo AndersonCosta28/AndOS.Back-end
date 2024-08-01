@@ -1,9 +1,8 @@
-﻿using Bogus;
-using Integration.API.Factories;
-using Integration.API.Utils;
-using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
+﻿using AndOS.Shared.Requests.Accounts.Get.GetById;
+using AndOS.Shared.Requests.Files.Create;
+using AndOS.Shared.Requests.Files.Get.GetById;
+using AndOS.Shared.Requests.Files.Update.Content;
+using AndOS.Shared.Requests.Files.Update.Rename;
 
 namespace Integration.API.Controllers;
 
@@ -161,16 +160,16 @@ public class FilesControllerIntegrationTests : IClassFixture<CustomWebApplicatio
         content.Headers.Add("x-ms-blob-type", "BlockBlob");
         content.Headers.Add("x-ms-version", AzureConsts.DefaultServiceVersion);
 
-        HttpResponseMessage response = await httpClient.PutAsync(url, content, cancellationToken);
+        var response = await httpClient.PutAsync(url, content, cancellationToken);
         response.EnsureSuccessStatusCode();
     }
 
     async Task<string> DownloadAsync(string url, CancellationToken cancellationToken = default)
     {
         using HttpClient httpClient = new();
-        HttpResponseMessage response = await httpClient.GetAsync(url, cancellationToken);
+        var response = await httpClient.GetAsync(url, cancellationToken);
         response.EnsureSuccessStatusCode();
-        string content = await response.Content.ReadAsStringAsync(cancellationToken);
+        var content = await response.Content.ReadAsStringAsync(cancellationToken);
         return content;
     }
 }

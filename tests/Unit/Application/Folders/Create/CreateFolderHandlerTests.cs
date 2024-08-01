@@ -1,6 +1,7 @@
 ﻿using AndOS.Application.Exceptions;
 using AndOS.Application.Folders.Create;
 using AndOS.Application.Folders.Get.GetById;
+using AndOS.Shared.Requests.Folders.Create;
 
 namespace Unit.Application.Folders.Create;
 
@@ -84,7 +85,7 @@ public class CreateFolderHandlerTests
                 throw new ApplicationLayerException(_localizerMock.Object["ParentFolderNotFound"]);
             });
         // Act & Assert
-        ApplicationLayerException exception = await Assert.ThrowsAsync<ApplicationLayerException>(() => _handler.Handle(request, default));
+        var exception = await Assert.ThrowsAsync<ApplicationLayerException>(() => _handler.Handle(request, default));
         Assert.Equal("The parent folder was not found.", exception.Message);
     }
 }

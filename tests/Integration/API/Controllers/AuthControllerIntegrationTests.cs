@@ -1,10 +1,7 @@
-using Integration.API.Factories;
-using Integration.API.Utils;
+using AndOS.Shared.DTOs;
+using AndOS.Shared.Requests.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
 
 namespace Integration.API.Controllers;
 

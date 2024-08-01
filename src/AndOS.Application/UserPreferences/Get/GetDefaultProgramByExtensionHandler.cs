@@ -12,13 +12,7 @@ public class GetDefaultProgramByExtensionHandler(IRepository<UserPreference> use
         var preference = await userPreferenceRepository.FirstOrDefaultAsync(new GetUserPreferenceByUserIdSpec(currentUserId), cancellationToken);
 
         if (preference == null)
-        {
-            preference = new();
-            preference.UserId = currentUserId;
-            preference.DefaultProgramsToExtensions = [new DefaultProgramForExtension() { Extension = request.Extension, Program = string.Empty }];
-            await userPreferenceRepository.AddAsync(preference, cancellationToken);
             return returnDefault(request.Extension);
-        }
         else
         {
             var defaultProgramForExtension = preference.DefaultProgramsToExtensions.Find(x => x.Extension == request.Extension);

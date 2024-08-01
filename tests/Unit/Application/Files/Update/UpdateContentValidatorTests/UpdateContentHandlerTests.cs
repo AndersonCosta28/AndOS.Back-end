@@ -2,7 +2,7 @@
 using AndOS.Application.Files.Get.GetById;
 using AndOS.Application.Files.Update.Content;
 using AndOS.Application.Folders.Get.GetAccountFolderInParentFolder;
-using Common.Fixtures;
+using AndOS.Shared.Requests.Files.Update.Content;
 
 namespace Unit.Application.Files.Update.UpdateContentValidatorTests;
 

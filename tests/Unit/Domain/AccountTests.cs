@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-
-namespace Unit.Domain;
+﻿namespace Unit.Domain;
 
 public class AccountTests
 {

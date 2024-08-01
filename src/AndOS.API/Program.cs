@@ -1,10 +1,10 @@
-global using MediatR;
-global using AndOS.Core.Enums;
-global using File = AndOS.Domain.Entities.File;
 global using AndOS.Application.Interfaces;
+global using AndOS.Core.Enums;
 global using AndOS.Domain.Entities;
 global using AndOS.Domain.Interfaces;
 global using AndOS.Shared.DTOs;
+global using MediatR;
+global using File = AndOS.Domain.Entities.File;
 using AndOS.API.Cors;
 using AndOS.API.Localization;
 using AndOS.API.Mapper;

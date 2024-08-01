@@ -1,5 +1,6 @@
 ﻿using AndOS.Application.Files.Get.GetById;
 using AndOS.Application.Files.Update.Content;
+using AndOS.Shared.Requests.Files.Update.Content;
 
 namespace Unit.Application.Files.Update.UpdateContentValidatorTests
 {

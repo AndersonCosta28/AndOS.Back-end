@@ -1,14 +1,12 @@
 ﻿using AndOS.Infrastructure.CloudStorage;
 using Azure.Storage.Blobs;
 using Common.Fixtures;
-using System.Text.Json;
 namespace Integration.Infraestructure.CloudStorages;
 
 public class AzureBlobStorageServiceTests(FileFixture fileFixture, ConfigFixture configFixture) : IClassFixture<FileFixture>, IClassFixture<ConfigFixture>
 {
     private readonly AzureBlobStorageService _azureBlobStorageService = new();
-    private readonly ConfigFixture _configFixture = configFixture;
-    AzureBlobStorageConfig _azureConfig = configFixture.AzureConfigDefault;
+    private readonly AzureBlobStorageConfig _azureConfig = configFixture.AzureConfigDefault;
     [Fact]
     public async Task GetUploadUrlAsync_ShouldReturnUploadUrl()
     {
@@ -42,7 +40,7 @@ public class AzureBlobStorageServiceTests(FileFixture fileFixture, ConfigFixture
         var file = fileFixture.DefaultFile;
         var account = file.ParentFolder.GetAccount();
 
-        BlobClient blobClient = await CreateFile(file, account);
+        var blobClient = await CreateFile(file, account);
 
         // Chamar o método a ser testado
         await _azureBlobStorageService.DeleteFileAsync(file, account);

@@ -4,12 +4,22 @@ namespace AndOS.Domain.Entities;
 
 public class UserPreference : IEntity, IAggregateRoot
 {
-    public Guid Id { get; set; }
-    public IUser User { get; set; }
-    public Guid UserId { get; set; }
-    public string Language { get; set; } = "en-US";
-    public List<DefaultProgramForExtension> DefaultProgramsToExtensions { get; set; } = [];
+    public UserPreference() { }
 
+    public UserPreference(IUser user) => this.User = user;
+
+    public UserPreference(IUser user, string language, List<DefaultProgramForExtension> defaultProgramsToExtensions)
+    {
+        this.User = user;
+        this.Language = language;
+        this.DefaultProgramsToExtensions = defaultProgramsToExtensions;
+    }
+
+    public Guid Id { get; set; }
+    public IUser User { get; private set; }
+    public Guid UserId { get; private set; }
+    public string Language { get; private set; }
+    public List<DefaultProgramForExtension> DefaultProgramsToExtensions { get; private set; } = [];
     public void UpdateDefaultProgramToExtension(List<DefaultProgramForExtension> defaultProgramForExtensions)
     {
         foreach (var defaultProgramForExtension in defaultProgramForExtensions)

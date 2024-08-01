@@ -1,6 +1,7 @@
 ﻿using AndOS.Application.Folders.Common.Specs;
 using AndOS.Application.Folders.Get.GetById;
 using AndOS.Application.Folders.Update.Rename;
+using AndOS.Shared.Requests.Folders.Update.Rename;
 
 namespace Unit.Application.Folders.Update.Rename
 {

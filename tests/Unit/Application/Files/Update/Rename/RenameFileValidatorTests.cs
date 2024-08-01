@@ -2,7 +2,7 @@
 using AndOS.Application.Files.Common.Specs;
 using AndOS.Application.Files.Get.GetById;
 using AndOS.Application.Files.Update.Rename;
-using Common.Fixtures;
+using AndOS.Shared.Requests.Files.Update.Rename;
 
 namespace Unit.Application.Files.Update.Rename
 {

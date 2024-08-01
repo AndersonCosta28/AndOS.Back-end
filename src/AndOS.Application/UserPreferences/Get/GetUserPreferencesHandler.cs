@@ -10,11 +10,8 @@ public class GetUserPreferencesHandler(IRepository<UserPreference> userPreferenc
         var currentUserId = currentUserContext.GetCurrentUserId();
         var preference = await userPreferenceRepository.FirstOrDefaultAsync(new GetUserPreferenceByUserIdSpec(currentUserId), cancellationToken);
         if (preference == null)
-        {
-            preference = new();
-            preference.UserId = currentUserId;
-            await userPreferenceRepository.AddAsync(preference, cancellationToken);
-        }
+            return new UserPreferenceDTO("en-US", []);
+
         return await mapperService.MapAsync<UserPreferenceDTO>(preference);
     }
 }

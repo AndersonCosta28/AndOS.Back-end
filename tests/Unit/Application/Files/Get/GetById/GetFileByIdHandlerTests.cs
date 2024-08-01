@@ -1,7 +1,7 @@
 ﻿using AndOS.Application.Exceptions;
 using AndOS.Application.Files.Get.GetById;
 using AndOS.Application.Folders.Get.GetAccountFolderInParentFolder;
-using Common.Fixtures;
+using AndOS.Shared.Requests.Files.Get.GetById;
 
 namespace Unit.Application.Files.Get.GetById
 {

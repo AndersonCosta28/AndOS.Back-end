@@ -3,7 +3,7 @@ using AndOS.Application.Exceptions;
 using AndOS.Application.Files.Create;
 using AndOS.Application.Folders.Get.GetAccountFolderInParentFolder;
 using AndOS.Application.Folders.Get.GetById;
-using Common.Fixtures;
+using AndOS.Shared.Requests.Files.Create;
 using ISender = MediatR.ISender;
 
 
@@ -59,7 +59,7 @@ public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<
     public async Task Handle_Should_Create_File_When_Request_Is_Valid()
     {
         // Arrange
-        string expectedUrl = "https://example.com/download";
+        var expectedUrl = "https://example.com/download";
 
         var file = _fileFixture.DefaultFile;
         var request = new CreateFileRequest(file.Name, file.Extension, file.Size, file.ParentFolder.Id);
@@ -72,7 +72,7 @@ public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<
         _folderRepositoryMock.Setup(f => f.FirstOrDefaultAsync(It.IsAny<GetFolderByIdSpec>(), It.IsAny<CancellationToken>())).ReturnsAsync(file.ParentFolder);
         _fileRepositoryMock.Setup(f => f.AddAsync(It.IsAny<File>(), It.IsAny<CancellationToken>())).ReturnsAsync(file);
 
-        Mock<ICloudStorageService> cloudStorageServiceMock = new Mock<ICloudStorageService>();
+        var cloudStorageServiceMock = new Mock<ICloudStorageService>();
         _cloudStorageServiceFactoryMock.Setup(f => f.GetCloudStorageService(account.CloudStorage)).Returns(cloudStorageServiceMock.Object);
         cloudStorageServiceMock.Setup(c => c.GetUploadUrlAsync(It.IsAny<File>(), It.IsAny<Account>())).ReturnsAsync(expectedUrl);
 

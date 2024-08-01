@@ -1,5 +1,6 @@
 ﻿using AndOS.Application.Files.Delete;
 using AndOS.Application.Files.Get.GetById;
+using AndOS.Shared.Requests.Files.Delete;
 
 namespace Unit.Application.Files.Delete
 {

@@ -1,5 +1,4 @@
-﻿using Bogus;
-using File = AndOS.Domain.Entities.File;
+﻿using File = AndOS.Domain.Entities.File;
 namespace Common.Fixtures;
 
 public class FileFixture

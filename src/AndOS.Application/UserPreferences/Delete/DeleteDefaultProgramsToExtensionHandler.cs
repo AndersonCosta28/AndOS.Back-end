@@ -9,8 +9,8 @@ public class DeleteDefaultProgramsToExtensionHandler(IRepository<UserPreference>
     {
         var currentUserId = currentUserContext.GetCurrentUserId();
         var preference = await userPreferenceRepository.FirstOrDefaultAsync(new GetUserPreferenceByUserIdSpec(currentUserId), cancellationToken);
-        if (preference == null)        
-            return;        
+        if (preference == null)
+            return;
         else
         {
             preference.RemoveDefaultProgramToExtension(request.Extension);

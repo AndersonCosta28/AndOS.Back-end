@@ -1,7 +1,4 @@
-﻿using AndOS.Domain.Entities;
-using Bogus;
-
-namespace Common.Fixtures;
+﻿namespace Common.Fixtures;
 
 public class FolderFixture
 {
