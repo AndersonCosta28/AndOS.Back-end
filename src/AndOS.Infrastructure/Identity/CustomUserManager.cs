@@ -1,4 +1,4 @@
-﻿using AndOS.Application.Users.Get.GetUserByUserName;
+﻿using AndOS.Application.Users.Get.GetUserByNickName;
 using AndOS.Infrastructure.Exceptions;
 using AndOS.Infrastructure.Identity.Entities;
 using AndOS.Resources.Localization;

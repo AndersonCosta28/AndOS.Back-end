@@ -1,8 +1,13 @@
 ﻿namespace AndOS.Domain.Entities;
 public class DefaultProgramForExtension
 {
-    public Guid UserPreferenceId { get; set; }
-    public UserPreference UserPreference { get; set; }
-    public string Extension { get; set; }
-    public string Program { get; set; }
+    public DefaultProgramForExtension(string extension, string program)
+    {
+        this.Extension = extension;
+        this.Program = program;
+    }
+    public Guid UserPreferenceId { get; private set; }
+    public UserPreference UserPreference { get; private set; }
+    public string Extension { get; private set; }
+    public string Program { get; private set; }
 }

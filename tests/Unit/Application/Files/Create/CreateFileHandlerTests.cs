@@ -9,9 +9,8 @@ using ISender = MediatR.ISender;
 
 namespace Unit.Application.Files.Create;
 
-public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<FolderFixture>
+public class CreateFileHandlerTests : IClassFixture<FileFixture>
 {
-    private readonly Mock<IMapperService> _mapperMock;
     private readonly Mock<IRepository<File>> _fileRepositoryMock;
     private readonly Mock<IReadRepository<Folder>> _folderRepositoryMock;
     private readonly Mock<IReadRepository<Account>> _accountReadRepositoryMock;
@@ -20,13 +19,11 @@ public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<
     private readonly Mock<IStringLocalizer<ValidationResource>> _localizerMock;
     private readonly Mock<IAuthorizationService> _authorizationServiceMock;
     private readonly Mock<ISender> _senderMock;
-    private readonly IRequestHandler<CreateFileRequest, CreateFileResponse> _handler;
+    private readonly CreateFileHandler _handler;
     private readonly FileFixture _fileFixture;
-    private readonly FolderFixture _folderFixture;
 
-    public CreateFileHandlerTests(FileFixture fileFixture, FolderFixture folderFixture)
+    public CreateFileHandlerTests(FileFixture fileFixture)
     {
-        _mapperMock = new Mock<IMapperService>();
         _fileRepositoryMock = new Mock<IRepository<File>>();
         _folderRepositoryMock = new Mock<IReadRepository<Folder>>();
         _accountReadRepositoryMock = new Mock<IReadRepository<Account>>();
@@ -49,7 +46,6 @@ public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<
             _senderMock.Object
         );
         _fileFixture = fileFixture;
-        _folderFixture = folderFixture;
     }
 
     /// <summary>
@@ -66,7 +62,7 @@ public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<
         var account = file.ParentFolder.GetAccount();
 
         _senderMock.Setup(repo => repo.Send(It.IsAny<GetAccountFolderInParentFolderRequest>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync((account.Folder));
+            .ReturnsAsync(account.Folder);
 
         _currentUserContextMock.Setup(c => c.GetCurrentUserAsync(It.IsAny<CancellationToken>())).ReturnsAsync(file.GetUser());
         _folderRepositoryMock.Setup(f => f.FirstOrDefaultAsync(It.IsAny<GetFolderByIdSpec>(), It.IsAny<CancellationToken>())).ReturnsAsync(file.ParentFolder);

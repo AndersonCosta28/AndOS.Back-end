@@ -10,6 +10,7 @@ using AndOS.API.Localization;
 using AndOS.API.Mapper;
 using AndOS.Infrastructure;
 using AndOS.Infrastructure.Database;
+using AndOS.ServiceDefaults;
 using FluentValidation;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;

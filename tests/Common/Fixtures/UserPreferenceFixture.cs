@@ -1,11 +1,6 @@
 ﻿namespace Common.Fixtures;
 public class UserPreferenceFixture
 {
-    public UserPreferenceFixture()
-    {
-
-    }
-
     public UserPreference CreateUserPreference(IUser user)
     {
         var userPreference = new UserPreference(user);

@@ -2,7 +2,7 @@
 using AndOS.Application.UserPreferences.Common;
 using AndOS.Shared.Requests.UserPreferences.Get.GetDefaultProgramByExtension;
 
-namespace AndOS.Application.Users.Get;
+namespace AndOS.Application.UserPreferences.Get;
 public class GetDefaultProgramByExtensionHandler(IRepository<UserPreference> userPreferenceRepository, ICurrentUserContext currentUserContext) : IRequestHandler<GetDefaultProgramByExtensionRequest, GetDefaultProgramByExtensionResponse>
 {
     public async Task<GetDefaultProgramByExtensionResponse> Handle(GetDefaultProgramByExtensionRequest request, CancellationToken cancellationToken)

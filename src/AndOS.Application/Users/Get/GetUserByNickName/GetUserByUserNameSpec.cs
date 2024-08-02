@@ -1,6 +1,6 @@
 ﻿using Ardalis.Specification;
 
-namespace AndOS.Application.Users.Get.GetUserByUserName;
+namespace AndOS.Application.Users.Get.GetUserByNickName;
 
 public class GetUserByUserNameSpec : Specification<IUser>
 {

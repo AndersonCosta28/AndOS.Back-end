@@ -1,6 +1,6 @@
 ﻿using Ardalis.Specification;
 
-namespace AndOS.Application.UserGet;
+namespace AndOS.Application.UserClaim.Get;
 
 public class GetUserClaimByUserIdAndTypeAndValueSpec : Specification<IUserClaim>
 {
