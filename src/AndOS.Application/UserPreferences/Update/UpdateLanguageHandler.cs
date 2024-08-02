@@ -13,6 +13,7 @@ public class UpdateLanguageHandler(IRepository<UserPreference> userPreferenceRep
         {
             preference = new();
             preference.UpdateLanguage(request.Language);
+            preference.UpdateUser(currentUserId);
             await userPreferenceRepository.AddAsync(preference, cancellationToken);
         }
         else

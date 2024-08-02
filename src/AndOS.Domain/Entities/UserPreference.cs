@@ -20,6 +20,7 @@ public class UserPreference : IEntity, IAggregateRoot
     public Guid UserId { get; private set; }
     public string Language { get; private set; }
     public List<DefaultProgramForExtension> DefaultProgramsToExtensions { get; private set; } = [];
+
     public void UpdateDefaultProgramToExtension(List<DefaultProgramForExtension> defaultProgramForExtensions)
     {
         foreach (var defaultProgramForExtension in defaultProgramForExtensions)
@@ -48,5 +49,19 @@ public class UserPreference : IEntity, IAggregateRoot
             return;
 
         this.Language = language;
+    }
+
+    public void UpdateUser(IUser user)
+    {
+        if (user == this.User)
+            return;
+        this.User = user;
+    }
+
+    public void UpdateUser(Guid userId)
+    {
+        if (userId == this.UserId)
+            return;
+        this.UserId = userId;
     }
 }

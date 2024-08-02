@@ -14,6 +14,7 @@ public class UpdateDefaultProgramsToExtensionHandler(IRepository<UserPreference>
         {
             preference = new();
             preference.UpdateDefaultProgramToExtension(defaultProgramToExtension);
+            preference.UpdateUser(currentUserId);
             await userPreferenceRepository.AddAsync(preference, cancellationToken);
         }
         else
