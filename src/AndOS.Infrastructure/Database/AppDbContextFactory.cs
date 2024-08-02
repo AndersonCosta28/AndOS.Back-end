@@ -19,7 +19,7 @@ public class AppDbContextFactory : IDbContextFactory<AppDbContext>,
     public AppDbContext CreateDbContext()
     {
         var appDbContext = _pooledFactory.CreateDbContext();
-        appDbContext.Database.EnsureCreated();
+        appDbContext.Database.Migrate();
         var currentUserContext = _services.GetRequiredService<ICurrentUserContext>();
         appDbContext.SetCurrentUser(currentUserContext);
         return appDbContext;

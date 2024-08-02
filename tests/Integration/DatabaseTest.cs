@@ -23,7 +23,7 @@ public class DatabaseTest
         CurrentUserContextMock = new Mock<ICurrentUserContext>();
 
         DbContext = new AppDbContext(options);
-        DbContext.SetCurrentUser(CurrentUserContextMock.Object); DbContext.Database.EnsureCreated();
+        DbContext.SetCurrentUser(CurrentUserContextMock.Object);
         _user = (ApplicationUser)user;
         DbContext.Users.Add(_user);
         DbContext.SaveChanges();

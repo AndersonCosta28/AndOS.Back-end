@@ -18,7 +18,7 @@ public class UserPreference : IEntity, IAggregateRoot
     public Guid Id { get; set; }
     public IUser User { get; private set; }
     public Guid UserId { get; private set; }
-    public string Language { get; private set; }
+    public string Language { get; private set; } = "en-US";
     public List<DefaultProgramForExtension> DefaultProgramsToExtensions { get; private set; } = [];
 
     public void UpdateDefaultProgramToExtension(List<DefaultProgramForExtension> defaultProgramForExtensions)

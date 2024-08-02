@@ -11,12 +11,12 @@ public class AppDbContext :
     private ICurrentUserContext _currentUserContext;
     public AppDbContext()
     {
-        Database.EnsureCreated();
+        Database.Migrate();
     }
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
-        Database.EnsureCreated();
+        Database.Migrate();
     }
 
     public void SetCurrentUser(ICurrentUserContext currentUserContext)
