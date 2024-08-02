@@ -1,7 +1,10 @@
 ﻿global using AndOS.Application.Interfaces;
 global using AndOS.Core.Constants;
 global using AndOS.Core.Enums;
+global using AndOS.Core.Extensions;
+global using AndOS.Core.StorageConfigs;
 global using AndOS.Domain.Entities;
+global using AndOS.Shared.Consts;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Configuration;

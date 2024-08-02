@@ -1,11 +1,8 @@
-﻿using AndOS.Application.Accounts.Get.GetById;
-using AndOS.Application.Exceptions;
+﻿using AndOS.Application.Exceptions;
 using AndOS.Application.Files.Get.GetById;
 using AndOS.Application.Files.Update.Content;
 using AndOS.Application.Folders.Get.GetAccountFolderInParentFolder;
 using AndOS.Shared.Requests.Files.Update.Content;
-using Common.Fixtures;
-using Moq;
 
 namespace Unit.Application.Files.Update.UpdateContentValidatorTests;
 

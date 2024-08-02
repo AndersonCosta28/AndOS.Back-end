@@ -1,11 +1,16 @@
-﻿global using AndOS.API.Controllers;
-global using AndOS.Application.Interfaces;
+﻿global using AndOS.Application.Interfaces;
+global using AndOS.Core.Enums;
+global using AndOS.Core.Schemas;
+global using AndOS.Core.StorageConfigs;
 global using AndOS.Domain.Entities;
+global using AndOS.Domain.Exceptions;
 global using AndOS.Domain.Interfaces;
 global using AndOS.Infrastructure.Identity.Entities;
 global using AndOS.Resources.Localization;
+global using Common.Fixtures;
 global using FluentValidation.TestHelper;
 global using MediatR;
 global using Microsoft.Extensions.Localization;
 global using Moq;
+global using System.Text.Json;
 global using File = AndOS.Domain.Entities.File;

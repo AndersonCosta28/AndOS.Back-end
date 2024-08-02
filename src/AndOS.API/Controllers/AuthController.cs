@@ -1,5 +1,4 @@
-﻿using AndOS.Application.Interfaces;
-using AndOS.Infrastructure.Identity.Entities;
+﻿using AndOS.Infrastructure.Identity.Entities;
 using AndOS.Shared.Requests.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

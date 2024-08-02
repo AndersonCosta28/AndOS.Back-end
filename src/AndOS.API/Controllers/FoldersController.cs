@@ -1,5 +1,4 @@
-﻿using AndOS.Core.Enums;
-using AndOS.Infrastructure.Identity.Attributes;
+﻿using AndOS.Infrastructure.Identity.Attributes;
 using AndOS.Resources.Localization;
 using AndOS.Shared.Requests.Folders.Create;
 using AndOS.Shared.Requests.Folders.Delete;

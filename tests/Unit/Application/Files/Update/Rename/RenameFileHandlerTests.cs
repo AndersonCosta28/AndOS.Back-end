@@ -2,7 +2,6 @@
 using AndOS.Application.Files.Get.GetById;
 using AndOS.Application.Files.Update.Rename;
 using AndOS.Shared.Requests.Files.Update.Rename;
-using Common.Fixtures;
 
 namespace Unit.Application.Files.Update.Rename
 {
@@ -32,14 +31,14 @@ namespace Unit.Application.Files.Update.Rename
         public async Task Should_Throw_Exception_When_File_Not_Found()
         {
             // Arrange
-            RenameFileRequest request = new RenameFileRequest { Id = Guid.NewGuid(), Name = "NewName", Extension = "txt" };
+            var request = new RenameFileRequest { Id = Guid.NewGuid(), Name = "NewName", Extension = "txt" };
             _fileRepositoryMock.Setup(repo => repo.FirstOrDefaultAsync(It.IsAny<GetFileByIdSpec>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync((File)null);
 
             _validationLocalizerMock.Setup(l => l["FileNotFound"]).Returns(new LocalizedString("FileNotFound", "File not found"));
 
             // Act & Assert
-            ApplicationLayerException exception = await Assert.ThrowsAsync<ApplicationLayerException>(() => _handler.Handle(request, CancellationToken.None));
+            var exception = await Assert.ThrowsAsync<ApplicationLayerException>(() => _handler.Handle(request, CancellationToken.None));
             Assert.Equal("File not found", exception.Message);
         }
 
@@ -52,7 +51,7 @@ namespace Unit.Application.Files.Update.Rename
             // Arrange
             var file = _fileFixture.DefaultFile;
 
-            RenameFileRequest request = new RenameFileRequest { Id = file.Id, Name = "NewName", Extension = "md" };
+            var request = new RenameFileRequest { Id = file.Id, Name = "NewName", Extension = "md" };
 
             _fileRepositoryMock.Setup(repo => repo.FirstOrDefaultAsync(It.IsAny<GetFileByIdSpec>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(file);

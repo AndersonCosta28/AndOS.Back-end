@@ -1,7 +1,6 @@
 ﻿using AndOS.Application.Exceptions;
 using AndOS.Application.Folders.Common.Specs;
 using AndOS.Application.Folders.Get.GetByPath;
-using AndOS.Core.Enums;
 using AndOS.Shared.DTOs;
 using AndOS.Shared.Requests.Folders.Get.GetById;
 using AndOS.Shared.Requests.Folders.Get.GetByPath;
@@ -40,8 +39,8 @@ namespace Unit.Application.Folders.Get.GetByPath
         public async Task Handle_Should_Return_Folders_In_Root_When_Path_Is_Empty()
         {
             // Arrange
-            GetFolderByPathRequest request = new GetFolderByPathRequest(string.Empty);
-            List<ChildrenFolderDTO> foldersInRoot = new List<ChildrenFolderDTO>
+            var request = new GetFolderByPathRequest(string.Empty);
+            var foldersInRoot = new List<ChildrenFolderDTO>
             {
                 new () { Id = Guid.NewGuid(), Name = "RootFolder1" },
                 new (){ Id = Guid.NewGuid(), Name = "RootFolder2" }
@@ -51,7 +50,7 @@ namespace Unit.Application.Folders.Get.GetByPath
                 .ReturnsAsync(foldersInRoot);
 
             // Act
-            GetFolderByPathResponse result = await _handler.Handle(request, default);
+            var result = await _handler.Handle(request, default);
 
             // Assert
             Assert.NotNull(result);
@@ -72,10 +71,10 @@ namespace Unit.Application.Folders.Get.GetByPath
         public async Task Handle_Should_Return_Folder_When_Path_Is_Valid()
         {
             // Arrange
-            Guid folderId = Guid.NewGuid();
-            GetFolderByPathRequest request = new GetFolderByPathRequest("ValidPath");
-            Folder folder = new Folder("ValidPath", new ApplicationUser { Id = Guid.NewGuid() }) { Id = folderId };
-            GetFolderByIdResponse folderResponse = new GetFolderByIdResponse
+            var folderId = Guid.NewGuid();
+            var request = new GetFolderByPathRequest("ValidPath");
+            var folder = new Folder("ValidPath", new ApplicationUser { Id = Guid.NewGuid() }) { Id = folderId };
+            var folderResponse = new GetFolderByIdResponse
             {
                 Id = folderId,
                 Name = "ValidPath",
@@ -116,13 +115,13 @@ namespace Unit.Application.Folders.Get.GetByPath
         public async Task Handle_Should_Throw_Exception_When_Path_Is_Invalid()
         {
             // Arrange
-            GetFolderByPathRequest request = new GetFolderByPathRequest("InvalidPath");
+            var request = new GetFolderByPathRequest("InvalidPath");
 
             _folderRepositoryMock.Setup(f => f.FirstOrDefaultAsync(It.IsAny<GetFolderByNameAndParentFolderIdSpec>(), default))
                 .ReturnsAsync((Folder)null);
 
             // Act & Assert
-            ApplicationLayerException exception = await Assert.ThrowsAsync<ApplicationLayerException>(() => _handler.Handle(request, default));
+            var exception = await Assert.ThrowsAsync<ApplicationLayerException>(() => _handler.Handle(request, default));
             Assert.Equal("Folder not found", exception.Message);
         }
     }

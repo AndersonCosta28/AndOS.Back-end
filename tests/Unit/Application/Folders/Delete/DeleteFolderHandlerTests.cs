@@ -31,7 +31,7 @@ namespace Unit.Application.Folders.Delete
         public async Task Handle_Should_Delete_Folder_When_Request_Is_Valid()
         {
             // Arrange
-            DeleteFolderRequest request = new DeleteFolderRequest { Id = Guid.NewGuid() };
+            var request = new DeleteFolderRequest { Id = Guid.NewGuid() };
             Folder folder = new Folder("FolderToDelete", new ApplicationUser { Id = Guid.NewGuid() });
 
             _folderRepositoryMock.Setup(f => f.FirstOrDefaultAsync(It.IsAny<GetFolderByIdSpec>(), default))
@@ -51,13 +51,13 @@ namespace Unit.Application.Folders.Delete
         public async Task Handle_Should_Throw_Exception_When_Folder_Not_Found()
         {
             // Arrange
-            DeleteFolderRequest request = new DeleteFolderRequest { Id = Guid.NewGuid() };
+            var request = new DeleteFolderRequest { Id = Guid.NewGuid() };
 
             _folderRepositoryMock.Setup(f => f.FirstOrDefaultAsync(It.IsAny<GetFolderByIdSpec>(), default))
                 .ReturnsAsync((Folder)null);
 
             // Act & Assert
-            ApplicationLayerException exception = await Assert.ThrowsAsync<ApplicationLayerException>(() => _handler.Handle(request, default));
+            var exception = await Assert.ThrowsAsync<ApplicationLayerException>(() => _handler.Handle(request, default));
             Assert.Equal("Folder not found", exception.Message);
         }
     }

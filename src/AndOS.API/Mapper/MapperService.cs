@@ -1,5 +1,4 @@
-﻿using AndOS.Application.Interfaces;
-using Mapster;
+﻿using Mapster;
 using MapsterMapper;
 
 namespace AndOS.API.Mapper;

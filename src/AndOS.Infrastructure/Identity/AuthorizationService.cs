@@ -1,7 +1,5 @@
 ﻿using AndOS.Application.RoleClaim.Get;
 using AndOS.Application.UserClaim.Get;
-using AndOS.Application.UserGet;
-using AndOS.Core.Extensions;
 using AndOS.Domain.Interfaces;
 using AndOS.Infrastructure.Exceptions;
 using AndOS.Infrastructure.Identity.Entities;

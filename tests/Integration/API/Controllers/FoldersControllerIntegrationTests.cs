@@ -3,12 +3,6 @@ using AndOS.Shared.Requests.Folders.Create;
 using AndOS.Shared.Requests.Folders.Get.GetById;
 using AndOS.Shared.Requests.Folders.Get.GetByPath;
 using AndOS.Shared.Requests.Folders.Update.Rename;
-using Bogus;
-using Integration.API.Factories;
-using Integration.API.Utils;
-using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
 
 namespace Integration.API.Controllers;
 

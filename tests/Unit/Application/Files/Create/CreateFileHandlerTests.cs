@@ -1,22 +1,16 @@
 ﻿using AndOS.Application.Accounts.Get.GetById;
 using AndOS.Application.Exceptions;
 using AndOS.Application.Files.Create;
-using AndOS.Application.Files.Get.GetById;
 using AndOS.Application.Folders.Get.GetAccountFolderInParentFolder;
 using AndOS.Application.Folders.Get.GetById;
-using AndOS.Core.Enums;
 using AndOS.Shared.Requests.Files.Create;
-using Common.Fixtures;
-using NuGet.Protocol.Plugins;
-using System.Threading;
 using ISender = MediatR.ISender;
 
 
 namespace Unit.Application.Files.Create;
 
-public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<FolderFixture>
+public class CreateFileHandlerTests : IClassFixture<FileFixture>
 {
-    private readonly Mock<IMapperService> _mapperMock;
     private readonly Mock<IRepository<File>> _fileRepositoryMock;
     private readonly Mock<IReadRepository<Folder>> _folderRepositoryMock;
     private readonly Mock<IReadRepository<Account>> _accountReadRepositoryMock;
@@ -25,13 +19,11 @@ public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<
     private readonly Mock<IStringLocalizer<ValidationResource>> _localizerMock;
     private readonly Mock<IAuthorizationService> _authorizationServiceMock;
     private readonly Mock<ISender> _senderMock;
-    private readonly IRequestHandler<CreateFileRequest, CreateFileResponse> _handler;
+    private readonly CreateFileHandler _handler;
     private readonly FileFixture _fileFixture;
-    private readonly FolderFixture _folderFixture;
 
-    public CreateFileHandlerTests(FileFixture fileFixture, FolderFixture folderFixture)
+    public CreateFileHandlerTests(FileFixture fileFixture)
     {
-        _mapperMock = new Mock<IMapperService>();
         _fileRepositoryMock = new Mock<IRepository<File>>();
         _folderRepositoryMock = new Mock<IReadRepository<Folder>>();
         _accountReadRepositoryMock = new Mock<IReadRepository<Account>>();
@@ -44,7 +36,7 @@ public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<
         // Setup localization messages
         _localizerMock.Setup(l => l["AccountNotFound"]).Returns(new LocalizedString("AccountNotFound", "Account not found"));
         _localizerMock.Setup(l => l["ParentFolderNotFound"]).Returns(new LocalizedString("ParentFolderNotFound", "Parent folder not found"));
-        _handler = new CreateFileHandler(            
+        _handler = new CreateFileHandler(
             _fileRepositoryMock.Object,
             _folderRepositoryMock.Object,
             _currentUserContextMock.Object,
@@ -54,7 +46,6 @@ public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<
             _senderMock.Object
         );
         _fileFixture = fileFixture;
-        _folderFixture = folderFixture;
     }
 
     /// <summary>
@@ -64,20 +55,20 @@ public class CreateFileHandlerTests : IClassFixture<FileFixture>, IClassFixture<
     public async Task Handle_Should_Create_File_When_Request_Is_Valid()
     {
         // Arrange
-        string expectedUrl = "https://example.com/download";
+        var expectedUrl = "https://example.com/download";
 
         var file = _fileFixture.DefaultFile;
         var request = new CreateFileRequest(file.Name, file.Extension, file.Size, file.ParentFolder.Id);
         var account = file.ParentFolder.GetAccount();
 
         _senderMock.Setup(repo => repo.Send(It.IsAny<GetAccountFolderInParentFolderRequest>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync((account.Folder));
+            .ReturnsAsync(account.Folder);
 
         _currentUserContextMock.Setup(c => c.GetCurrentUserAsync(It.IsAny<CancellationToken>())).ReturnsAsync(file.GetUser());
         _folderRepositoryMock.Setup(f => f.FirstOrDefaultAsync(It.IsAny<GetFolderByIdSpec>(), It.IsAny<CancellationToken>())).ReturnsAsync(file.ParentFolder);
         _fileRepositoryMock.Setup(f => f.AddAsync(It.IsAny<File>(), It.IsAny<CancellationToken>())).ReturnsAsync(file);
 
-        Mock<ICloudStorageService> cloudStorageServiceMock = new Mock<ICloudStorageService>();
+        var cloudStorageServiceMock = new Mock<ICloudStorageService>();
         _cloudStorageServiceFactoryMock.Setup(f => f.GetCloudStorageService(account.CloudStorage)).Returns(cloudStorageServiceMock.Object);
         cloudStorageServiceMock.Setup(c => c.GetUploadUrlAsync(It.IsAny<File>(), It.IsAny<Account>())).ReturnsAsync(expectedUrl);
 

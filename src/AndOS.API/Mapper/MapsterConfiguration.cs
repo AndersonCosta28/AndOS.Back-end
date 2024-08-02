@@ -1,8 +1,3 @@
-using AndOS.Application.Interfaces;
-using AndOS.Domain.Entities;
-using AndOS.Domain.Interfaces;
-using AndOS.Infrastructure.Identity;
-using AndOS.Shared.DTOs;
 using AndOS.Shared.Requests.Accounts.Create;
 using AndOS.Shared.Requests.Accounts.Update;
 using AndOS.Shared.Requests.Files.Create;

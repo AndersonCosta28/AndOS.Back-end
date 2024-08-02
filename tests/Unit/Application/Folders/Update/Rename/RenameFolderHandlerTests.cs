@@ -28,8 +28,8 @@ public class RenameFolderHandlerTests
     public async Task Handle_Should_Rename_Folder_When_Request_Is_Valid()
     {
         // Arrange
-        RenameFolderRequest request = new RenameFolderRequest { Id = Guid.NewGuid(), Name = "NewFolderName" };
-        Folder folder = new Folder("OldFolderName", new ApplicationUser { Id = Guid.NewGuid() });
+        var request = new RenameFolderRequest { Id = Guid.NewGuid(), Name = "NewFolderName" };
+        var folder = new Folder("OldFolderName", new ApplicationUser { Id = Guid.NewGuid() });
 
         _folderRepositoryMock.Setup(f => f.FirstOrDefaultAsync(It.IsAny<GetFolderByIdSpec>(), default))
             .ReturnsAsync(folder);
@@ -47,13 +47,13 @@ public class RenameFolderHandlerTests
     public async Task Handle_Should_Throw_Exception_When_Folder_Not_Found()
     {
         // Arrange
-        RenameFolderRequest request = new RenameFolderRequest { Id = Guid.NewGuid(), Name = "NewFolderName" };
+        var request = new RenameFolderRequest { Id = Guid.NewGuid(), Name = "NewFolderName" };
 
         _folderRepositoryMock.Setup(f => f.FirstOrDefaultAsync(It.IsAny<GetFolderByIdSpec>(), default))
             .ReturnsAsync((Folder)null);
 
         // Act & Assert
-        ApplicationLayerException exception = await Assert.ThrowsAsync<ApplicationLayerException>(() => _handler.Handle(request, default));
+        var exception = await Assert.ThrowsAsync<ApplicationLayerException>(() => _handler.Handle(request, default));
         Assert.Equal("Folder not found", exception.Message);
         //_unitOfWorkMock.Verify(u => u.RollbackAsync(default), Times.Once);
     }
