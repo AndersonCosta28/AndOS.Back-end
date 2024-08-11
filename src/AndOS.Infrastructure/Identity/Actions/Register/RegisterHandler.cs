@@ -1,6 +1,6 @@
 ﻿using AndOS.Infrastructure.Exceptions;
 using AndOS.Infrastructure.Identity.Entities;
-using AndOS.Shared.Requests.Auth;
+using AndOS.Shared.Requests.Auth.Register;
 using MediatR;
 
 namespace AndOS.Infrastructure.Identity.Actions.Register;

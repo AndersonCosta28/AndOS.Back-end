@@ -1,6 +1,8 @@
 ﻿using AndOS.Shared.Requests.Accounts.Create;
 using AndOS.Shared.Requests.Accounts.Get.GetById;
 using AndOS.Shared.Requests.Auth;
+using AndOS.Shared.Requests.Auth.Login;
+using AndOS.Shared.Requests.Auth.Register;
 
 namespace Integration.API.Utils;
 
@@ -54,7 +56,8 @@ public class ApiUtilsTests
         var content = new StringContent(JsonSerializer.Serialize(LoginRequest), Encoding.UTF8, "application/json");
         var response = await httpClient.PostAsync("/api/auth/login", content);
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadAsStringAsync();
+        var responseLogin = await response.Content.ReadFromJsonAsync<LoginResponse>();
+        return responseLogin.Token;
     }
 
 

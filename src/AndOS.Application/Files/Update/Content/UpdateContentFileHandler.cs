@@ -23,6 +23,6 @@ public class UploadFileHandler(
         await fileRepository.UpdateAsync(file, cancellationToken);
         ICloudStorageService cloudStorageService = cloudStorageServiceFactory.GetCloudStorageService(account.CloudStorage);
         var url = await cloudStorageService.GetUploadUrlAsync(file, account);
-        return new UpdateContentFileResponse(url);
+        return new UpdateContentFileResponse(url, account.CloudStorage);
     }
 }

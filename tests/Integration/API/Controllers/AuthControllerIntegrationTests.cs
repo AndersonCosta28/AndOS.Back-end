@@ -1,5 +1,7 @@
 using AndOS.Shared.DTOs;
 using AndOS.Shared.Requests.Auth;
+using AndOS.Shared.Requests.Auth.Login;
+using AndOS.Shared.Requests.Auth.Register;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
