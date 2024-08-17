@@ -1,4 +1,4 @@
-﻿using AndOS.Common.Classes;
+﻿using AndOS.Domain.Classes;
 using AndOS.Infrastructure.Identity.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Reflection;

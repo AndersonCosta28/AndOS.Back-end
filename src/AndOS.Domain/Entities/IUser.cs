@@ -1,6 +1,6 @@
-﻿using AndOS.Common.Interfaces;
-using AndOS.Core.Schemas;
+﻿using AndOS.Core.Schemas;
 using AndOS.Domain.Exceptions.UserExceptions;
+using AndOS.Domain.Interfaces;
 using System.Text.RegularExpressions;
 
 namespace AndOS.Domain.Entities;

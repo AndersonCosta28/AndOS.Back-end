@@ -1,4 +1,4 @@
-﻿namespace AndOS.Common.Interfaces;
+﻿namespace AndOS.Domain.Interfaces;
 
 public interface IAggregateRoot
 {

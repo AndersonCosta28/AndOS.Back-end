@@ -1,4 +1,4 @@
-﻿using AndOS.Common.Interfaces;
+﻿using AndOS.Domain.Interfaces;
 using AndOS.Infrastructure.Database;
 
 namespace AndOS.Infrastructure.Repositories;

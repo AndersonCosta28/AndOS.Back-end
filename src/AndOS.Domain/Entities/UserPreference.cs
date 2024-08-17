@@ -1,4 +1,4 @@
-﻿using AndOS.Common.Interfaces;
+﻿using AndOS.Domain.Interfaces;
 
 namespace AndOS.Domain.Entities;
 

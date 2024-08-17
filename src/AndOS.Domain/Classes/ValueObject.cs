@@ -1,13 +1,11 @@
-﻿namespace AndOS.Common.Classes;
+﻿namespace AndOS.Domain.Classes;
 
 public abstract class ValueObject
 {
     protected static bool equalOperator(ValueObject left, ValueObject right)
     {
         if (left is null ^ right is null)
-        {
             return false;
-        }
 
         return left?.Equals(right!) != false;
     }
@@ -19,14 +17,12 @@ public abstract class ValueObject
 
     protected abstract IEnumerable<object> getEqualityComponents();
 
-    public override bool Equals(object? obj)
+    public override bool Equals(object obj)
     {
         if (obj == null || obj.GetType() != GetType())
-        {
             return false;
-        }
 
-        ValueObject other = (ValueObject)obj;
+        var other = (ValueObject)obj;
         return getEqualityComponents().SequenceEqual(other.getEqualityComponents());
     }
 
@@ -34,7 +30,7 @@ public abstract class ValueObject
     {
         HashCode hash = new();
 
-        foreach (object component in getEqualityComponents())
+        foreach (var component in getEqualityComponents())
         {
             hash.Add(component);
         }

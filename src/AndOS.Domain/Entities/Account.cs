@@ -1,6 +1,6 @@
-﻿using AndOS.Common.Classes;
-using AndOS.Core.Enums;
+﻿using AndOS.Core.Enums;
 using AndOS.Core.StorageConfigs;
+using AndOS.Domain.Classes;
 using System.Text.Json;
 
 namespace AndOS.Domain.Entities;

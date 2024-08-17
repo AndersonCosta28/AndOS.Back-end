@@ -1,6 +1,6 @@
-﻿using AndOS.Common.Interfaces;
+﻿using AndOS.Domain.Interfaces;
 
-namespace AndOS.Common.Classes;
+namespace AndOS.Domain.Classes;
 
 public abstract class BaseAuditableEntity : BaseEntity, IAuditable
 {

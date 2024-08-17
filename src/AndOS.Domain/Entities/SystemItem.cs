@@ -1,4 +1,4 @@
-﻿using AndOS.Common.Classes;
+﻿using AndOS.Domain.Classes;
 
 namespace AndOS.Domain.Entities;
 

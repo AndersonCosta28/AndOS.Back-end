@@ -1,5 +1,5 @@
 ﻿using AndOS.Application.Common;
-using AndOS.Common.Interfaces;
+using AndOS.Domain.Interfaces;
 using Ardalis.Specification;
 
 namespace AndOS.Infrastructure.Repositories;

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace AndOS.Common.Classes;
+namespace AndOS.Domain.Classes;
 
 public abstract class BaseEvent : INotification
 {

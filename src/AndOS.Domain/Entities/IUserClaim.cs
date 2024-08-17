@@ -1,4 +1,4 @@
-﻿using AndOS.Common.Interfaces;
+﻿using AndOS.Domain.Interfaces;
 using System.Security.Claims;
 
 namespace AndOS.Domain.Entities;

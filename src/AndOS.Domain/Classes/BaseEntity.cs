@@ -1,7 +1,7 @@
-﻿using AndOS.Common.Interfaces;
+﻿using AndOS.Domain.Interfaces;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AndOS.Common.Classes;
+namespace AndOS.Domain.Classes;
 
 public abstract class BaseEntity : IAggregateRoot, IEntity
 {
