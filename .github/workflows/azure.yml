@@ -69,6 +69,12 @@ jobs:
       - name: Install azd
         uses: Azure/setup-azd@v1.0.0
 
+      - name: Run install workloads
+        run: |
+          dotnet workload restore
+          dotnet workload update
+          dotnet workload install aspire
+
       - name: Log in with Azure (Federated Credentials)
         if: ${{ env.AZURE_CLIENT_ID != '' }}
         run: |
