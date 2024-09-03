@@ -1,4 +1,5 @@
 name: CD
+
 on:
   workflow_dispatch:
   push:
@@ -15,9 +16,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    needs: ci
-    if: github.event.workflow_run.conclusion == 'success'
+  deploy:
     runs-on: ubuntu-latest
     env:
       AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
@@ -46,7 +45,6 @@ jobs:
         run: |
           $info = $Env:AZURE_CREDENTIALS | ConvertFrom-Json -AsHashtable;
           Write-Host "::add-mask::$($info.clientSecret)"
-
           azd auth login `
             --client-id "$($info.clientId)" `
             --client-secret "$($info.clientSecret)" `
@@ -62,3 +60,13 @@ jobs:
 
       - name: Deploy Application
         run: azd deploy --no-prompt -C ./AndOS.AppHost/
+
+  ci-check:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_run'
+    steps:
+      - name: Check CI status
+        run: |
+          # Aqui você pode adicionar lógica para verificar o resultado do workflow CI
+          # Por exemplo, você pode fazer uma requisição HTTP para obter o status do CI
+          echo "Verificando status do CI..."
