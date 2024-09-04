@@ -10,6 +10,7 @@ on:
 env:
   AND_OS_TOKEN: ${{ secrets.PAT_WORKFLOW }}
   ASPNETCORE_ENVIRONMENT: Release
+  Configuration=Release
 
 jobs:
   build_and_deploy:
