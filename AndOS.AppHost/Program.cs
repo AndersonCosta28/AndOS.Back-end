@@ -12,13 +12,11 @@ var api = builder.AddProject<Projects.AndOS_API>("andos-api")
     .WithReference(postgresdb)
     .WithReplicas(1);
 
-#if DEBUG
 builder.AddAzureStorage("storage")
             .RunAsEmulator(config => config.WithImageTag("latest")
                 .WithBlobPort(10000)
                 .WithQueuePort(10001)
                 .WithTablePort(10002))
             .AddBlobs("blob");
-#endif
 
 builder.Build().Run();
